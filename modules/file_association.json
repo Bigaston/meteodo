@@ -1,0 +1,32 @@
+{
+	"static": [
+		"start.mp3",
+		"sun_up.mp3",
+		"sun_down.mp3",
+		"time_for_brieffing.mp3",
+		"morning_weather.mp3",
+		"midday_weather.mp3",
+		"evening_weather.mp3",
+		"night_weather.mp3",
+		"morning_temp.mp3",
+		"midday_temp.mp3",
+		"evening_temp.mp3",
+		"night_temp.mp3",
+		"conclusion.mp3"
+	],
+	"degree": "degree.mp3",
+	"first": "number/first.mp3",
+	"year": {
+		"2020": "2020.mp3"
+	},
+	"hours": {
+		"midnight": "hours/midnight.mp3",
+		"midday": "hours/midday.mp3"
+	},
+	"city": {
+		"Strasbourg": {
+			"audio": "city/strasbourg.mp3",
+			"zipcode": "67000"
+		}
+	}
+}

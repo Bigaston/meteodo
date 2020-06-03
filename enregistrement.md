@@ -7,7 +7,7 @@ Ce matin, la météo sera [météo]. Quand à ce midi la météo sera [météo].
 
 Au niveau des températures, ce matin vous pourrez vous attendre à environ [degré] °C. Pour cette après midi, il fera [degré] °C. Ce soir, préparez vous à plus ou moins [degré] °C. Et cette nuit si vous sortez dehors la température sera de [degré] °C.
 
-Voilà! C'est tout pour ce bulletin météo automatique ! Rendez vous demain pour plus un nouveau brieffing météorologique. 
+Voilà! C'est tout pour ce bulletin météo automatique ! Rendez vous demain pour un nouveau brieffing météorologique. 
 
 Météo affichée : 8h, 12h, 18h, 22h
 

@@ -1,0 +1,23 @@
+{
+  "name": "meteodo",
+  "version": "1.0.0",
+  "description": "Génération automatique de bulletin météorologique sous forme de podcast",
+  "main": "meteodo.js",
+  "scripts": {
+	"postinstall": "node ./cli/init_file.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bigaston/meteodo.git"
+  },
+  "author": "Bigaston",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bigaston/meteodo/issues"
+  },
+  "homepage": "https://github.com/Bigaston/meteodo#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0"
+  }
+}
