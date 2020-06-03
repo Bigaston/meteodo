@@ -26,7 +26,10 @@
 	"city": {
 		"Strasbourg": {
 			"audio": "city/strasbourg.mp3",
-			"zipcode": "67000"
+			"zipcode": "67000",
+			"owm_id": "2973783",
+			"lat": "48.5833",
+			"lon": "7.75"
 		}
 	}
 }
