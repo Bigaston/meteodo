@@ -31,42 +31,44 @@ ville
 
 https://openweathermap.org/weather-conditions#Icon-list
 météo :
-- orageuse (200-211 230 - 231)
-- très orageuse (212)
-- faite d'orages intermitants (221)
-- une bruine (300-301)
-- une forte bruine (302)
-- une légère pluie fine (310)
-- une pluie fine (311)
-- une forte pluie fine (312)
-- une forte averse (314 - 321 - 522)
-- une légère pluie (500)
-- une pluie modérée (501)
-- une forte pluie (502)
-- une très forte pluie (503)
-- une pluie extrème (504)
-- une pluie givrante (511)
-- une légère averse (520)
-- une averse (521)
-- des averses par intermitence (531)
-- une légère neige (600)
-- de la neige (601)
-- une forte neige (602)
-- de la neige fondue (611)
-- de la neige fondue couplée à une averse (612 - 613)
-- une légère pluie avec de la neige (612)
-- de la pluie avec de la neige (616)
-- une légère averse avec de la neige (620)
-- une averse avec de la neige (621)
-- une forte averse avec de la neige (622)
-- un brouillard (701 - 702 - 741)
-- de la brume (721)
-- des tourbillions de poussières ou de sable (731 - 751 - 761)
-- composée de particule volcaniques (761)
-- des bourrasques (771)
-- des tornades (781)
-- dégagée (800)
-- composée de quelques nuages (801)
-- faite de nuages éparses (802)
-- plutôt nuageuse (803)
-- très nuageuse (804)
+- orageuse (200-211 230 - 231) 					thunderstorm
+- très orageuse (212) 							heavy_thunderstorm
+- faite d'orages intermitants (221) 			ragged_thunderstorm
+- une bruine (300-301)							drizzle
+- une forte bruine (302)						heavy_drizzle
+- une légère pluie fine (310)					light_drizzle
+- une pluie fine (311)							drizzle_rain
+- une forte pluie fine (312)					heavy_drizzle_rain
+- une forte averse (314 - 321 - 522)			heavy_shower_rain
+- une légère pluie (500)						light_rain
+- une pluie modérée (501)						moderate_rain
+- une forte pluie (502)							heavy_rain
+- une très forte pluie (503)					very_heavy_rain
+- une pluie extrème (504)						extreme_rain
+- une pluie givrante (511)						freezing_rain
+- une légère averse (520)						light_shower_rain
+- une averse (521)								shower_rain
+- des averses par intermitence (531)			ragged_shower_rain
+- une légère neige (600)						light_snow
+- de la neige (601)								snow
+- une forte neige (602)							heavy_snow
+- de la neige fondue (611)						sleet
+- de la neige fondue couplée à une averse (612 - 613) shower_sleet
+- une légère pluie avec de la neige (615)		light_rain_snow		
+- de la pluie avec de la neige (616)			rain_snow
+- une légère averse avec de la neige (620)		light_shower_snow
+- une averse avec de la neige (621)				shower_snow
+- une forte averse avec de la neige (622)		heavy_shower_snow
+
+- un brouillard (701 - 711 - 741)				fog
+- de la brume (721)								haze
+- des tourbillions de poussières ou de sable (731 - 751 - 761) sand
+- composée de particule volcaniques (762)		volcanic_ash
+- des bourrasques (771)							squalls
+- des tornades (781)							tornado
+
+- dégagée (800)									clear
+- composée de quelques nuages (801)				few_clouds
+- faite de nuages éparses (802)					scattered_clouds
+- plutôt nuageuse (803)							broken_clouds
+- très nuageuse (804)							overcast_clouds
