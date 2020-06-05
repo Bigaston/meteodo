@@ -2,4 +2,4 @@ require("dotenv").config()
 const m = require("./modules")
 
 
-m.audio.global_generation();
+m.generation.global_generation();

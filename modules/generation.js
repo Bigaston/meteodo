@@ -3,19 +3,28 @@ const { spawn } = require('child_process');
 const fs = require("fs")
 const path = require("path")
 const axios = require("axios")
-var rimraf = require('rimraf')
+const img = require("./img")
+const feed = require("./feed")
+const getMP3Duration = require('get-mp3-duration')
 
 module.exports = {
 	global_generation: () => {
 		Object.keys(file_association.city).forEach(k => {
-			if (fs.existsSync(path.join(__dirname, "../export/" + k))) {
-				rimraf(path.join(__dirname, "../export/" + k), {}, () => {
-					fs.mkdirSync(path.join(__dirname, "../export/" + k))
-					module.exports.start_generation(k);
-				})
-			} else {
-				module.exports.start_generation(k);
+			if (!fs.existsSync(path.join(__dirname, "../export/" + k))) {
+				fs.mkdirSync(path.join(__dirname, "../export/" + k))
 
+				img.img_feed(k).then(() => {
+					module.exports.start_generation(k);
+				});
+			} else {
+				if (!fs.existsSync(path.join(__dirname, "../export/" + k + "/feed_img.jpg"))) {
+					img.img_feed(k).then(() => {
+						module.exports.start_generation(k);
+
+					});
+				} else {
+					module.exports.start_generation(k);
+				}
 			}
 		})		
 	},
@@ -96,7 +105,7 @@ module.exports = {
 
 			tab_génération.push(file_association.static[12])
 
-			module.exports.generate_audio(tab_génération, "./export/" + ville + "/audio.mp3")
+			module.exports.generate_audio(tab_génération, "./export/" + ville + "/audio.mp3", ville)
 		})
 	},
 	generate_audio: (tab, sortie, ville) => {
@@ -125,7 +134,17 @@ module.exports = {
         ol.on('close', function (code) { 
 			fs.unlinkSync(path.join(__dirname, ("../audio/temp_" + ville + ".txt")), audio_file)
 
-			console.log("Finit!")
+			console.log("Finit audio!")
+
+			let today = new Date();
+			let date = `${today.getDate()}/${today.getMonth()}/${today.getFullYear()}`
+			const buffer = fs.readFileSync(path.join(__dirname, "../export/" + ville + "/audio.mp3"))
+			const duration = Math.round(getMP3Duration(buffer)/1000)
+			let duration_str = convertHMS(duration);
+
+			img.img_episode(ville, date).then(() => {
+				feed.generate_feed(ville, date, duration_str, fs.statSync(path.join(__dirname, "../export/" + ville + "/audio.mp3")).size, path.join(__dirname, "../export/" + ville + "/feed.xml"))
+			})
 		})
 	}
 }
@@ -145,4 +164,18 @@ function getWeatherData(hourly) {
 	})
 
 	return result;
+}
+
+function convertHMS(pSec) {
+	nbSec = pSec;
+	sortie = {};
+  
+	sortie.minute = Math.trunc(nbSec/60);
+	if (sortie.minute < 10) {sortie.minute = "0"+sortie.minute}
+  
+	nbSec = nbSec%60;
+	sortie.seconde = Math.trunc(nbSec);
+	if (sortie.seconde < 10) {sortie.seconde = "0"+sortie.seconde}
+  
+	return sortie.minute + ":" + sortie.seconde
 }

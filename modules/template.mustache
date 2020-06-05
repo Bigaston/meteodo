@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+			body {
+				font-family: 'Montserrat', sans-serif;
+				background-color: #FDFEFE;
+			}
+
+			p {
+				text-align: center;
+				margin: 10px;
+			}
+
+			#title {
+				margin-top: 650px;
+				font-size: 100px;
+			}
+
+			#subtitle {
+				font-size: 50px;
+				font-weight: bold;
+			}
+
+			#day {
+				font-size: 40px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="center_div">
+			<p id="title">☀️ + 🤖 + 🎙️</p>
+			<p id="subtitle">Météo à {{ ville }}</p>
+			{{#day}}
+				<p id="day">{{ day }}</p>
+			{{/day}}
+		</div>
+	</body>
+</html>
