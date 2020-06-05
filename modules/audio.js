@@ -29,7 +29,7 @@ module.exports = {
 		// Son a propos du levé du soleil
 		tab_génération.push(file_association.static[1]);
 
-		var request = `https://api.openweathermap.org/data/2.5/onecall?lat=${file_association.city[ville].lat}&lon=${file_association.city[ville].lon}&appid=${process.env.OWM_TOKEN}`;
+		var request = `https://api.openweathermap.org/data/2.5/onecall?lat=${file_association.city[ville].lat}&lon=${file_association.city[ville].lon}&appid=${process.env.OWM_TOKEN}&units=metric`;
 		console.log(request)
 
 		axios({
@@ -50,11 +50,40 @@ module.exports = {
 			tab_génération.push(file_association.static[3])
 			tab_génération.push(file_association.city[ville].audio)
 			
+			let weather_data = getWeatherData(res.data.hourly);
 
+			tab_génération.push(file_association.static[4])
+			tab_génération.push(file_association.weather[weather_data[0].weather[0].id])
+
+			tab_génération.push(file_association.static[5])
+			tab_génération.push(file_association.weather[weather_data[1].weather[0].id])
+
+			tab_génération.push(file_association.static[6])
+			tab_génération.push(file_association.weather[weather_data[2].weather[0].id])
+
+			tab_génération.push(file_association.static[7])
+			tab_génération.push(file_association.weather[weather_data[3].weather[0].id])
+
+			tab_génération.push(file_association.static[8])
+			tab_génération.push("number/" + Math.floor(weather_data[0].temp) + ".mp3")
+			tab_génération.push(file_association.degree);
+			
+			tab_génération.push(file_association.static[9])
+			tab_génération.push("number/" + Math.floor(weather_data[1].temp) + ".mp3")
+			tab_génération.push(file_association.degree);
+
+			tab_génération.push(file_association.static[10])
+			tab_génération.push("number/" + Math.floor(weather_data[2].temp) + ".mp3")
+			tab_génération.push(file_association.degree);
+
+			tab_génération.push(file_association.static[11])
+			tab_génération.push("number/" + Math.floor(weather_data[3].temp) + ".mp3")
+			tab_génération.push(file_association.degree);
+
+			tab_génération.push(file_association.static[12])
 
 			module.exports.generate_audio(tab_génération, "./sortie.mp3")
 		})
-
 	},
 	generate_audio: (tab, sortie) => {
 		var audio_file = "file './" + tab[0] + "'";
@@ -80,9 +109,26 @@ module.exports = {
         });
       
         ol.on('close', function (code) { 
-			//fs.unlinkSync(path.join(__dirname, ("../audio/temp.txt")), audio_file)
+			fs.unlinkSync(path.join(__dirname, ("../audio/temp.txt")), audio_file)
 
 			console.log("Finit!")
 		})
 	}
+}
+
+function getWeatherData(hourly) {
+	let current_day = new Date().now();
+	let result = []
+	
+	hourly.forEach(h => {
+		let date_h = new Date(h.dt * 1000);
+
+		if (date_h.getDate() == current_day.getDate()) {
+			if (date_h.getHours() == "8" || date_h.getHours() == "12" || date_h.getHours() == "18" || date_h.getHours() == "22") {
+				result.push(h)
+			}
+		}
+	})
+
+	return result;
 }
