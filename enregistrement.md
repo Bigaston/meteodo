@@ -72,3 +72,14 @@ météo :
 - faite de nuages éparses (802)					scattered_clouds
 - plutôt nuageuse (803)							broken_clouds
 - très nuageuse (804)							overcast_clouds
+
+## Idée pof amélioration
+- Ce matin
+- (et) Jusqu'à midi
+- Ce midi 
+- (et) Jusqu'à ce soir
+- Ce soir 
+- (et) Jusqu'à cette nuit
+- Cette nuit
+
+Tu coupes le (et) si besoin, genre si c'est le même temps du matin jusqu'au soir tu mets juste "jusqu'à ce soir",   mais par exemple si c'est de midi à la nuit : ce midi et jusqu'à cette nuit.

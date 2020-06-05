@@ -3,8 +3,22 @@ const { spawn } = require('child_process');
 const fs = require("fs")
 const path = require("path")
 const axios = require("axios")
+var rimraf = require('rimraf')
 
 module.exports = {
+	global_generation: () => {
+		Object.keys(file_association.city).forEach(k => {
+			if (fs.existsSync(path.join(__dirname, "../export/" + k))) {
+				rimraf(path.join(__dirname, "../export/" + k), {}, () => {
+					fs.mkdirSync(path.join(__dirname, "../export/" + k))
+					module.exports.start_generation(k);
+				})
+			} else {
+				module.exports.start_generation(k);
+
+			}
+		})		
+	},
 	start_generation: (ville) => {
 		var tab_génération = [ file_association.static[0]];
 
@@ -65,27 +79,27 @@ module.exports = {
 			tab_génération.push(file_association.weather[weather_data[3].weather[0].id])
 
 			tab_génération.push(file_association.static[8])
-			tab_génération.push("number/" + Math.floor(weather_data[0].temp) + ".mp3")
+			tab_génération.push("number/" + Math.round(weather_data[0].temp) + ".mp3")
 			tab_génération.push(file_association.degree);
 			
 			tab_génération.push(file_association.static[9])
-			tab_génération.push("number/" + Math.floor(weather_data[1].temp) + ".mp3")
+			tab_génération.push("number/" + Math.round(weather_data[1].temp) + ".mp3")
 			tab_génération.push(file_association.degree);
 
 			tab_génération.push(file_association.static[10])
-			tab_génération.push("number/" + Math.floor(weather_data[2].temp) + ".mp3")
+			tab_génération.push("number/" + Math.round(weather_data[2].temp) + ".mp3")
 			tab_génération.push(file_association.degree);
 
 			tab_génération.push(file_association.static[11])
-			tab_génération.push("number/" + Math.floor(weather_data[3].temp) + ".mp3")
+			tab_génération.push("number/" + Math.round(weather_data[3].temp) + ".mp3")
 			tab_génération.push(file_association.degree);
 
 			tab_génération.push(file_association.static[12])
 
-			module.exports.generate_audio(tab_génération, "./sortie.mp3")
+			module.exports.generate_audio(tab_génération, "./export/" + ville + "/audio.mp3")
 		})
 	},
-	generate_audio: (tab, sortie) => {
+	generate_audio: (tab, sortie, ville) => {
 		var audio_file = "file './" + tab[0] + "'";
 
 		tab.forEach(t => {
@@ -94,9 +108,9 @@ module.exports = {
 			audio_file = audio_file + "\nfile './" + t + "'";
 		})
 
-		fs.writeFileSync(path.join(__dirname, ("../audio/temp.txt")), audio_file)
+		fs.writeFileSync(path.join(__dirname, ("../audio/temp_" + ville + ".txt")), audio_file)
 
-		var tab_ffmpeg = ["-y", "-f", "concat", "-safe", "0", "-i", "./audio/temp.txt", sortie]
+		var tab_ffmpeg = ["-y", "-f", "concat", "-safe", "0", "-i", "./audio/temp_" + ville + ".txt", sortie]
 
         var ol = spawn("ffmpeg", tab_ffmpeg)
         
@@ -109,7 +123,7 @@ module.exports = {
         });
       
         ol.on('close', function (code) { 
-			fs.unlinkSync(path.join(__dirname, ("../audio/temp.txt")), audio_file)
+			fs.unlinkSync(path.join(__dirname, ("../audio/temp_" + ville + ".txt")), audio_file)
 
 			console.log("Finit!")
 		})
@@ -117,7 +131,7 @@ module.exports = {
 }
 
 function getWeatherData(hourly) {
-	let current_day = new Date().now();
+	let current_day = new Date(1591422699000);
 	let result = []
 	
 	hourly.forEach(h => {
