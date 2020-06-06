@@ -3,6 +3,7 @@ const express = require("express");
 const m = require("./modules")
 
 m.generation.global_generation();
+setInterval(m.generation.global_generation, 1000 * 60 * 5);
 
 var app = express()
 

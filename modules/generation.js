@@ -9,24 +9,28 @@ const getMP3Duration = require('get-mp3-duration')
 
 module.exports = {
 	global_generation: () => {
-		Object.keys(file_association.city).forEach(k => {
-			if (!fs.existsSync(path.join(__dirname, "../export/" + k))) {
-				fs.mkdirSync(path.join(__dirname, "../export/" + k))
-
-				img.img_feed(k).then(() => {
-					module.exports.start_generation(k);
-				});
-			} else {
-				if (!fs.existsSync(path.join(__dirname, "../export/" + k + "/feed_img.jpg"))) {
+		let current = new Date();
+		
+		if (current.getHours() == 5 && current.getMinutes() <= 5) {
+			Object.keys(file_association.city).forEach(k => {
+				if (!fs.existsSync(path.join(__dirname, "../export/" + k))) {
+					fs.mkdirSync(path.join(__dirname, "../export/" + k))
+	
 					img.img_feed(k).then(() => {
 						module.exports.start_generation(k);
-
 					});
 				} else {
-					module.exports.start_generation(k);
+					if (!fs.existsSync(path.join(__dirname, "../export/" + k + "/feed_img.jpg"))) {
+						img.img_feed(k).then(() => {
+							module.exports.start_generation(k);
+	
+						});
+					} else {
+						module.exports.start_generation(k);
+					}
 				}
-			}
-		})		
+			})	
+		}
 	},
 	start_generation: (ville) => {
 		var tab_génération = [ file_association.static[0]];
