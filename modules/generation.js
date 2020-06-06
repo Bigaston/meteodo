@@ -156,7 +156,7 @@ function getWeatherData(hourly) {
 	hourly.forEach(h => {
 		let date_h = new Date(h.dt * 1000);
 
-		if (date_h.getDate() == current_day.getDate() + 1) {
+		if (date_h.getDate() == current_day.getDate()) {
 			if (date_h.getHours() == "8" || date_h.getHours() == "12" || date_h.getHours() == "18" || date_h.getHours() == "22") {
 				result.push(h)
 			}
