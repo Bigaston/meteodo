@@ -29,7 +29,10 @@ module.exports = {
 		}
 
 		var string = mustache.render(template, render_obj);
-		var string_parsed = twemoji.parse(string, {size: 150});
+		var string_parsed = twemoji.parse(string, {
+			folder: 'svg',
+			ext: '.svg'
+		});
 
 		await render_and_screenshot(string_parsed, path.join(__dirname, "../export/" + ville + "/feed_img.jpg"))
 	},
@@ -42,7 +45,10 @@ module.exports = {
 		}
 
 		var string = mustache.render(template, render_obj);
-		var string_parsed = twemoji.parse(string, {size: 150});
+		var string_parsed = twemoji.parse(string, {
+			folder: 'svg',
+			ext: '.svg'
+		});
 
 		await render_and_screenshot(string_parsed, path.join(__dirname, "../export/" + ville + "/ep_img.jpg"))
 	}
