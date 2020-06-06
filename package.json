@@ -26,6 +26,7 @@
     "get-mp3-duration": "^1.0.0",
     "mustache": "^4.0.1",
     "puppeteer": "^3.3.0",
-    "rss": "^1.2.2"
+    "rss": "^1.2.2",
+    "twemoji": "^13.0.0"
   }
 }

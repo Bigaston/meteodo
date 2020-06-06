@@ -1,6 +1,7 @@
 const puppeteer = require('puppeteer');
 const path = require("path");
 const mustache = require("mustache")
+const twemoji = require("twemoji")
 const fs = require("fs")
 
 const render_and_screenshot = async (content, sortie) => {
@@ -28,8 +29,9 @@ module.exports = {
 		}
 
 		var string = mustache.render(template, render_obj);
+		var string_parsed = twemoji.parse(string, {size: 150});
 
-		await render_and_screenshot(string, path.join(__dirname, "../export/" + ville + "/feed_img.jpg"))
+		await render_and_screenshot(string_parsed, path.join(__dirname, "../export/" + ville + "/feed_img.jpg"))
 	},
 	img_episode: async (ville, date) => {
 		var template = fs.readFileSync(path.join(__dirname, "./template.mustache"), "utf8");
@@ -40,7 +42,8 @@ module.exports = {
 		}
 
 		var string = mustache.render(template, render_obj);
+		var string_parsed = twemoji.parse(string, {size: 150});
 
-		await render_and_screenshot(string, path.join(__dirname, "../export/" + ville + "/ep_img.jpg"))
+		await render_and_screenshot(string_parsed, path.join(__dirname, "../export/" + ville + "/ep_img.jpg"))
 	}
 }
