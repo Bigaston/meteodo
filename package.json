@@ -6,7 +6,8 @@
   "scripts": {
     "postinstall": "node ./cli/init_file.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node meteodo.js"
+    "start": "node meteodo.js",
+    "first_gen": "node ./cli/first.js"
   },
   "repository": {
     "type": "git",
