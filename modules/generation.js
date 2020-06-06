@@ -38,7 +38,7 @@ module.exports = {
 		var maintenant = new Date();;
 
 		// Jour de la semaine
-		tab_génération.push("day/" + (maintenant.getDay()-1) + ".mp3");
+		tab_génération.push("day/" + (maintenant.getDay()) + ".mp3");
 
 		// Jour dans le mois
 		if (maintenant.getDate() == 1) {
