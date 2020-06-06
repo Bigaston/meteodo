@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<title>Météodo</title>
+		<link rel="stylesheet" type="text/css" href="/static/style.css">
+		<meta property="og:title" content="Météodo" />
+		<meta property="og:description" content="Un bulletin météo quotidien généré automatiquement par météodo. Retrouvez votre bulletin tous les matins à 5H!" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="{{ host }}" />
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+		<meta name="theme-color" content="#F4D03F">
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="content">
+                <h1>Météodo</h1>
+                <p>Météodo est un service qui va générer tous les matins un bulletin météo pour une liste de villes, et ensuite les diffuser sous forme de podcast. <br>
+                Chaque bulletin sera disponible aux allentours de 5h du matin, sur la page dédiée de chaque ville, ou dans leurs flux RSS.</p>
+
+                <h2>Liste des villes</h2>
+                <p>Pour le moment les villes supportées par le système sont :</p>
+                <ul>
+                    <li><a href="/Strasbourg">Strasbourg</a></li>
+                </ul>
+
+                <p>Si vous voulez proposer une ville à ajouter, n'hésitez pas à envoyer un message à <a href="https://twitter.com/Bigaston">Bigaston</a></p>
+
+                <h2>Pourquoi avoir fait ce projet?</h2>
+                <p>Météodo est (pour le moment) plus un proof of concept que un réel produit finit. C'était pour moi l'occasion de faire un projet que je voulais depuis un moment, un podcast qui se fait automatiquement.
+                La météo vient du site <a href="https://openweathermap.org/">OpenWeatherMap</a>, ensuite le système va assembler les différents morceaux enregistrés pour faire un réel fichier audio, et recréer un flux RSS valide!</p>
+			</div>
+		</div>
+
+		<footer>
+			<p>Météodo est un projet développé par <a href="https://twitter.com/Bigaston">Bigaston</a></p>
+			<p>Ce site utilise des icones venant de <a href="https://fontawesome.com/" target="_blank">FontAwesome</a></p>
+		</footer>
+	</body>
+</html>

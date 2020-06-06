@@ -7,7 +7,8 @@ if (!fs.existsSync(path.join(__dirname, "../.env"))) {
     fs.writeFileSync(path.join(__dirname, "../.env"), `
 OWM_TOKEN=
 HOST=localhost
-CONTACT_EMAIL=`)
+CONTACT_EMAIL=
+PORT=4378`)
 }
 
 if (!fs.existsSync(path.join(__dirname, "../export"))) {
