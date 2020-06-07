@@ -141,7 +141,7 @@ module.exports = {
 			console.log("Finit audio!")
 
 			let today = new Date();
-			let date = `${today.getDate()}/${today.getMonth()}/${today.getFullYear()}`
+			let date = `${today.getDate()}/${today.getMonth()+1}/${today.getFullYear()}`
 			const buffer = fs.readFileSync(path.join(__dirname, "../export/" + ville + "/audio.mp3"))
 			const duration = Math.round(getMP3Duration(buffer)/1000)
 			let duration_str = convertHMS(duration);
