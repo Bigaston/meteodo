@@ -17,25 +17,28 @@ module.exports = {
 					fs.mkdirSync(path.join(__dirname, "../export/" + k))
 	
 					img.img_feed(k).then(() => {
-						module.exports.start_generation(k);
+						module.exports.start_generation(k, false);
 					});
 				} else {
 					if (!fs.existsSync(path.join(__dirname, "../export/" + k + "/feed_img.jpg"))) {
 						img.img_feed(k).then(() => {
-							module.exports.start_generation(k);
+							module.exports.start_generation(k, false);
 	
 						});
 					} else {
-						module.exports.start_generation(k);
+						module.exports.start_generation(k, false);
 					}
 				}
 			})	
 		}
 	},
-	start_generation: (ville) => {
+	start_generation: (ville, tomorrow) => {
 		var tab_génération = [ file_association.static[0]];
 
-		var maintenant = new Date();;
+		var maintenant = new Date();
+
+		if (tomorrow) maintenant = maintenant.addDays(1);
+
 
 		// Jour de la semaine
 		tab_génération.push("day/" + (maintenant.getDay()) + ".mp3");
@@ -77,7 +80,7 @@ module.exports = {
 			tab_génération.push(file_association.static[3])
 			tab_génération.push(file_association.city[ville].audio)
 			
-			let weather_data = getWeatherData(res.data.hourly);
+			let weather_data = getWeatherData(res.data.hourly, tomorrow);
 
 			tab_génération.push(file_association.static[4])
 			tab_génération.push(file_association.weather[weather_data[0].weather[0].id])
@@ -109,10 +112,10 @@ module.exports = {
 
 			tab_génération.push(file_association.static[12])
 
-			module.exports.generate_audio(tab_génération, "./export/" + ville + "/audio.mp3", ville)
+			module.exports.generate_audio(tab_génération, "./export/" + ville + "/audio.mp3", ville, tomorrow)
 		})
 	},
-	generate_audio: (tab, sortie, ville) => {
+	generate_audio: (tab, sortie, ville, tomorrow) => {
 		var audio_file = "file './" + tab[0] + "'";
 
 		tab.forEach(t => {
@@ -141,6 +144,9 @@ module.exports = {
 			console.log("Finit audio!")
 
 			let today = new Date();
+
+			if (tomorrow) today = today.addDays(1);
+
 			let date = `${today.getDate()}/${today.getMonth()+1}/${today.getFullYear()}`
 			const buffer = fs.readFileSync(path.join(__dirname, "../export/" + ville + "/audio.mp3"))
 			const duration = Math.round(getMP3Duration(buffer)/1000)
@@ -153,8 +159,11 @@ module.exports = {
 	}
 }
 
-function getWeatherData(hourly) {
+function getWeatherData(hourly, tomorrow) {
 	let current_day = new Date();
+
+	if (tomorrow) current_day = current_day.addDays(1);
+
 	let result = []
 	
 	hourly.forEach(h => {
@@ -168,6 +177,12 @@ function getWeatherData(hourly) {
 	})
 
 	return result;
+}
+
+Date.prototype.addDays = function(days) {
+    var date = new Date(this.valueOf());
+    date.setDate(date.getDate() + days);
+    return date;
 }
 
 function convertHMS(pSec) {

@@ -10,16 +10,16 @@ Object.keys(file_association.city).forEach(k => {
         fs.mkdirSync(path.join(__dirname, "../export/" + k))
 
         img.img_feed(k).then(() => {
-            generation.start_generation(k, false);
+            generation.start_generation(k, true);
         });
     } else {
         if (!fs.existsSync(path.join(__dirname, "../export/" + k + "/feed_img.jpg"))) {
             img.img_feed(k).then(() => {
-                generation.start_generation(k, false);
+                generation.start_generation(k, true);
 
             });
         } else {
-            generation.start_generation(k, false);
+            generation.start_generation(k, true);
         }
     }
 })

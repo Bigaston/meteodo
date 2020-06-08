@@ -30,6 +30,36 @@
 			"owm_id": "2973783",
 			"lat": "48.5833",
 			"lon": "7.75"
+		},
+		"Bordeaux": {
+			"audio": "city/bordeaux.mp3",
+			"lat": "44.8333",
+			"lon": "-0.5667"
+		},
+		"Brest": {
+			"audio": "city/brest.mp3",
+			"lat": "48.4",
+			"lon": "-4.4833"
+		},
+		"Nantes": {
+			"audio": "city/nantes.mp3",
+			"lat": "47.2173",
+			"lon": "-1.5534"
+		},
+		"Paris": {
+			"audio": "city/paris.mp3",
+			"lat": "48.8534",
+			"lon": "2.3488"
+		},
+		"Rennes": {
+			"audio": "city/rennes.mp3",
+			"lat": "48.0833",
+			"lon": "-1.6833"
+		},
+		"Toulouse": {
+			"audio": "city/toulouse.mp3",
+			"lat": "43.6043",
+			"lon": "1.4437"
 		}
 	},
 	"weather": {
