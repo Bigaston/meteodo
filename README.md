@@ -1,6 +1,6 @@
 # meteodo
-Génération automatique de bulletin météorologique sous forme de podcast
-![GitHub](https://img.shields.io/github/license/Bigaston/meteodo) ![GitHub stars](https://img.shields.io/github/stars/Bigaston/meteodo?style=social) ![Website](https://img.shields.io/website?url=https%3A%2F%2Fmeteodo.bigaston.dev)
+![GitHub](https://img.shields.io/github/license/Bigaston/meteodo) ![GitHub stars](https://img.shields.io/github/stars/Bigaston/meteodo?style=social) ![Website](https://img.shields.io/website?url=https%3A%2F%2Fmeteodo.bigaston.dev)  
+Génération automatique de bulletin météorologique sous forme de podcast  
 
 ## C'est quoi Météodo?
 Météodo c'est un nouveau projet sur lequel j'ai travaillé la semaine dernière et qui part du principe "Et si on générait automatiquement un bulletin météo audio?" C'est donc ce que fait ce projet! Tous les matins à 5h vous pouvez retrouver un nouveau bulletin météo sur un flux RSS dédié à chaque ville, et qui vous informera sur la météo de la journée.
