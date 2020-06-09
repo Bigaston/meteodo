@@ -7,7 +7,7 @@
     "postinstall": "node ./cli/init_file.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node meteodo.js",
-    "first_gen": "node ./cli/first.js",
+    "today": "node ./cli/today.js",
     "tomorrow": "node ./cli/tomorrow.js"
   },
   "repository": {
