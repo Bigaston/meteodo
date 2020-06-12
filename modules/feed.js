@@ -55,14 +55,14 @@ module.exports = {
 				{'itunes:subtitle': "La météo du jours à " + ville + " pour la journée du " + date},
 				{'itunes:image': {
 				_attr: {
-					href: process.env.HOST + "/" + ville + "/ep_img.jpg#" + date
+					href: process.env.HOST + "/" + ville + "/ep_img.jpg?date=" + date
 				}
 				}},
 				{'itunes:duration': duration},
 				{"itunes:episodeType": "full"},
 				{"enclosure" : {
 					_attr: {
-						url: process.env.HOST + "/" + ville + "/audio.mp3#" + date,
+						url: process.env.HOST + "/" + ville + "/audio.mp3?date=" + date,
 						type: "audio/mpeg",
 						length: size
 					}
